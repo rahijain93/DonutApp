@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">DonutApp</string>
+    <string name="app_name">Donut App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_count">Topping Count :</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="something_went_wrong">Oops something went wrong...</string>
+    <string name="below_is_the_list_of_toppings">Below is the List of Toppings :</string>
 </resources>
