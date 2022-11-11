@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -53,6 +54,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 
     def room_version = "2.2.5"
+    def nav_version = "2.1.0-beta01"
 
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     implementation "android.arch.persistence.room:rxjava2:1.1.1"
@@ -69,4 +71,8 @@ dependencies {
 
     implementation 'org.glassfish:javax.annotation:10.0-b28'
     compileOnly 'com.github.pengrad:jdk9-deps:1.0'
+
+    // For Java
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
 }

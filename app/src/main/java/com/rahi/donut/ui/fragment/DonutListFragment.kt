@@ -12,14 +12,14 @@ import com.rahi.donut.data.model.DonutListModel
 import com.rahi.donut.databinding.FragmentDonutListBinding
 import com.rahi.donut.ui.adapter.GenericAdapter
 import com.rahi.donut.ui.viewmodel.DonutViewModel
+import com.rahi.donut.util.listeners.DonutClickListener
 import org.koin.android.ext.android.inject
 
-class DonutListFragment : Fragment() {
+class DonutListFragment : Fragment(), DonutClickListener {
     lateinit var MainAdapter: GenericAdapter
     lateinit var donutUi: FragmentDonutListBinding
     val mainVm by inject<DonutViewModel>()
     val app by inject<AppController> ()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +30,8 @@ class DonutListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
-
         donutUi = FragmentDonutListBinding.inflate(inflater, container, false)
-        MainAdapter = GenericAdapter(this.requireContext(), activity as MainActivity)
+        MainAdapter = GenericAdapter(this.requireContext(), this)
         donutUi.rvList.adapter = MainAdapter
         return donutUi.root
     }
@@ -47,7 +45,8 @@ class DonutListFragment : Fragment() {
         })
     }
 
-    companion object {
-        val TAG: String = DonutListFragment::class.simpleName.toString()
+    override fun onDonutClick(id: Int) {
+        (activity as MainActivity).navController
+            .navigate( DonutListFragmentDirections.actionFragmentDonutListToFragmentToppings(id.toString()))
     }
 }

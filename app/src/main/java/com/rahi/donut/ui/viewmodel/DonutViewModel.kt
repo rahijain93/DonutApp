@@ -31,7 +31,6 @@ class DonutViewModel(val app: AppController, val repo: DonutRepository) : ViewMo
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.IO
 
-
     fun getAllDonutApi(){
         output.value = Result.Loading(true)
 

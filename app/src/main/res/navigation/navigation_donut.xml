@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_donut"
+    app:startDestination="@id/fragmentDonutList">
+
+    <fragment
+        android:id="@+id/fragmentDonutList"
+        android:name="com.rahi.donut.ui.fragment.DonutListFragment"
+        android:label="DonutListFragment"
+        tools:layout="@layout/fragment_donut_list">
+        <action
+            android:id="@+id/action_fragmentDonutList_to_fragmentToppings"
+            app:destination="@id/fragmentToppings"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentToppings"
+        android:name="com.rahi.donut.ui.fragment.ToppingDetailsFragment"
+        android:label="FragmentToppings"
+        tools:layout="@layout/fragment_topping_list">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
