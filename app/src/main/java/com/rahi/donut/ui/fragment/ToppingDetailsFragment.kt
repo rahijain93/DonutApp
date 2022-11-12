@@ -5,43 +5,53 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import com.rahi.donut.AppController
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import com.rahi.donut.data.model.ToppingsDetailsModel
 import com.rahi.donut.databinding.FragmentToppingListBinding
-import com.rahi.donut.ui.adapter.ToppingAdapter
+import com.rahi.donut.ui.adapter.ToppingsAdapter
 import com.rahi.donut.ui.viewmodel.DonutViewModel
-import org.koin.android.ext.android.inject
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ToppingDetailsFragment : Fragment() {
 
-    lateinit var ToppingAdapter: ToppingAdapter
-    lateinit var ToppingUi: FragmentToppingListBinding
-    private lateinit var args: ToppingDetailsFragmentArgs
-    val mainVm by inject<DonutViewModel>()
-    val app by inject<AppController>()
+    lateinit var binding: FragmentToppingListBinding
+    private lateinit var toppingAdapter: ToppingsAdapter
+    private val args: ToppingDetailsFragmentArgs by navArgs()
+    private val viewModel by activityViewModels<DonutViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        ToppingUi = FragmentToppingListBinding.inflate(inflater, container, false)
-        args = arguments?.let { ToppingDetailsFragmentArgs.fromBundle(it) }!!
-        ToppingUi.donutModel = mainVm.getDonutById(args.id.toInt())
-        return ToppingUi.root
+        binding = FragmentToppingListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ToppingAdapter = ToppingAdapter(this.requireContext())
-        ToppingUi.rvList.adapter = ToppingAdapter
-        val donutId = args.id.toInt()
-        mainVm.getAllToppingsById(donutId)?.observe(this.viewLifecycleOwner, Observer {
+
+        setUpView()
+        setUpAdapter()
+        setUpObserver()
+    }
+
+    private fun setUpView() {
+        binding.donutModel = viewModel.getDonutById(args.id)
+    }
+
+    private fun setUpAdapter() {
+        toppingAdapter = ToppingsAdapter()
+        binding.rvList.adapter = toppingAdapter
+    }
+
+    private fun setUpObserver() {
+        viewModel.getAllToppingsById(args.id)?.observe(this.viewLifecycleOwner) {
             if (it != null) {
-                ToppingAdapter.setInfoModelArrayList(it as ArrayList<ToppingsDetailsModel>)
+                toppingAdapter.updateToppings(it as ArrayList<ToppingsDetailsModel>)
             }
-        })
+        }
     }
 }

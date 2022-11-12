@@ -1,4 +1,4 @@
-package com.rahi.donut.data.dao
+package com.rahi.donut.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -9,7 +9,7 @@ import com.rahi.donut.data.model.DonutListModel
 import com.rahi.donut.data.model.ToppingsDetailsModel
 
 @Dao
-interface DonutsDao {
+interface DonutDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDonutMaster(donuts: DonutListModel)
