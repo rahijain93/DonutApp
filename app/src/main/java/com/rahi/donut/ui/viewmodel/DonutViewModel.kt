@@ -30,6 +30,7 @@ class DonutViewModel @Inject constructor(
 
     var donutData: LiveData<List<DonutListModel>> = MutableLiveData()
 
+    //called in activity
     fun getAllDonutApi() {
         output.value = Result.Loading(true)
         api.getAllDonut().enqueue(object : Callback<List<DonutListModel>> {
@@ -65,6 +66,7 @@ class DonutViewModel @Inject constructor(
         })
     }
 
+    // this we observe in DonutListFragment when we take list from DB
     fun getDonutMaster() {
         donutData = repository.getLiveDonutDat()!!
     }

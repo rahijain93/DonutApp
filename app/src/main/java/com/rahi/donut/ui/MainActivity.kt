@@ -30,10 +30,15 @@ class MainActivity : AppCompatActivity() {
                 setErrorText(getString(R.string.no_internet))
             }
         }
+        setObservers()
     }
 
-    override fun onResume() {
-        super.onResume()
+    private fun setErrorText(errorMsg: String) {
+        binding.errorTitle.visibility = if (errorMsg.isNotEmpty()) View.VISIBLE else View.GONE
+        binding.errorTitle.text = errorMsg
+    }
+
+    private fun setObservers(){
         viewModel.result.observe(this) {
             if (it != null) {
                 when (it) {
@@ -65,10 +70,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    private fun setErrorText(errorMsg: String) {
-        binding.errorTitle.visibility = if (errorMsg.isNotEmpty()) View.VISIBLE else View.GONE
-        binding.errorTitle.text = errorMsg
     }
 }
