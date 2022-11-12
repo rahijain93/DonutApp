@@ -21,18 +21,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <ProgressBar
             android:id="@+id/pb_circular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:indeterminateTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.rahi.donut.util.CustomTextView
+        <com.rahi.donut.widget.CustomTextView
             android:id="@+id/errorTitle"
             style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="wrap_content"
@@ -45,7 +45,11 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pb_circular" />
+            app:layout_constraintTop_toBottomOf="@+id/pb_circular"
+            tools:text="dknfvkjsnfsdv"/>
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -51,16 +51,16 @@ class MainActivity : AppCompatActivity() {
                             Toast.makeText(this, it.msg, Toast.LENGTH_LONG).show()
                         } else {
                             setErrorText(it.msg)
+                            binding.pbCircular.visibility = View.GONE
                         }
                     }
                     is Result.Error.RecoverableError -> {
                         setErrorText(it.exception.message!!)
+                        binding.pbCircular.visibility = View.GONE
                     }
                     is Result.Error.NonRecoverableError -> {
                         setErrorText(it.exception.message!!)
-                    }
-                    else -> {
-                        setErrorText(getString(R.string.something_went_wrong))
+                        binding.pbCircular.visibility = View.GONE
                     }
                 }
             }
