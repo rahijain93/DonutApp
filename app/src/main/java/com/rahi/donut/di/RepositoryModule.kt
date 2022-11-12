@@ -1,7 +1,7 @@
 package com.rahi.donut.di
 
 import com.rahi.donut.data.repository.DonutRepositoryImpl
-import com.rahi.donut.domain.repository.DonutRepository
+import com.rahi.donut.data.repository.DonutRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -4,7 +4,6 @@ import android.util.Log
 import com.rahi.donut.data.local.DonutDao
 import com.rahi.donut.data.model.DonutListModel
 import com.rahi.donut.data.model.ToppingsDetailsModel
-import com.rahi.donut.domain.repository.DonutRepository
 import javax.inject.Inject
 
 /**

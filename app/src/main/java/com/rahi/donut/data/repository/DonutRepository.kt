@@ -1,4 +1,4 @@
-package com.rahi.donut.domain.repository
+package com.rahi.donut.data.repository
 
 import androidx.lifecycle.LiveData
 import com.rahi.donut.data.model.DonutListModel
