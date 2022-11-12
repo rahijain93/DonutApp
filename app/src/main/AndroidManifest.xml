@@ -11,9 +11,10 @@
         android:icon="@mipmap/donut"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.DonutCafe">
-        <activity android:name="com.rahi.donut.MainActivity"
+        android:theme="@style/Theme.DonutCafe"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.rahi.donut.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

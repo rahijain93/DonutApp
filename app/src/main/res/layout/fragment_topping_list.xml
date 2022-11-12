@@ -18,7 +18,7 @@
         android:background="@color/purple_200"
         tools:context=".ui.fragment.ToppingDetailsFragment">
 
-        <com.rahi.donut.util.CustomTextView
+        <com.rahi.donut.widget.CustomTextView
             android:id="@+id/title"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:text="@{`Name : `+donutModel.name}"
             android:textSize="20sp" />
 
-        <com.rahi.donut.util.CustomTextView
+        <com.rahi.donut.widget.CustomTextView
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             android:text="@{`Type : `+donutModel.type}"
             android:textSize="18sp" />
 
-        <com.rahi.donut.util.CustomTextView
+        <com.rahi.donut.widget.CustomTextView
             android:id="@+id/descp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
